@@ -1,13 +1,22 @@
 import UserList from "./components/UserList";
 import "./App.css"
+import PostList from "./components/PostList";
+import Authors from "./components/Author";
 
 function App() {
   return (
     <div className="App">
       
       <h1>REDUX TOOLKIT</h1>
+     
+      {/* Basics of rtk */}
+      {/*<UserList/> */}
 
-      <UserList/>
+      {/* Async action in rtk */}
+      {/* <PostList/> */} 
+
+      {/* Rtk query */}
+      <Authors/>
 
     </div>
   );
@@ -49,5 +58,13 @@ If action is supposed to be handled by one reducer then use reducers but if acti
 But note if in a slice we have handled a action case in both reducer and extra reducer then priority will be given to reducer and extra redcuer will be ignored 
 
 One problem with extra reducer is that if we have defined extraReducer for deleteAll action in adminSlice present in userSlice then it will work fine but if reducer or action of deleteAll has been removed from userSlice so in this case handling the case of deleteAll action in adminSlice will generate error as this action no longer exist so to solve the case of action which are not defined in any slice or those which are generated globally we use "createAction()" method
+
+3. ############ createAsynThunk
+
+createAsyncThunk is a utility function provided by Redux Toolkit that simplifies the process of handling asynchronous actions in Redux. It's particularly useful for making API calls, fetching data, and handling the different states of an asynchronous operation (such as loading, success, and error). createAsyncThunk creates an asynchronous action creator that dispatches three different actions: pending, fulfilled, and rejected.
+
+4. ############ Redux Toolkit Query
+
+RTK Query is a library included in Redux Toolkit for handling data fetching and caching in a Redux store. It simplifies the process of making API requests, managing the state related to data fetching, and updating the Redux store.
 
 */
