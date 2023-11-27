@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../services/slices/userSlice";
 
 const AddUser = ({ open, close }) => {
-  const dispatch = useDispatch();
+
+  const dispatch = useDispatch();   // Similar to redux one used to dispatch an action to change redux state
   const [newUser, setnewUser] = useState("");
 
   const handleAdd = () => {

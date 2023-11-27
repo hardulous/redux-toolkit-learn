@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "../slices/userSlice";
+import adminSlice from "../slices/adminSlice";
 
 const store = configureStore({
   // Here this reducer property can be both single reducer function if root reducer is provided and object of slices reducers which under the hood converted to root reducer function by reduxToolkit by combineReducers() utility
   reducer: {
     usersList: userSlice,
+    adminList: adminSlice
   },
 });
 
@@ -24,4 +26,4 @@ Once the store is configured, we can use it in your application to manage the gl
 
 */
 
-// Here When ever we dispatch an action the flow of redux first come to this store and then based on action type the store will decide which slice reducer does this action type belongs to and then the flow will go to that slice reducer to update the state
+// Here When ever we dispatch an action the flow of redux first come to this store and from there it will go to all reducers mentioned in combineReducers() , but each reducer decides whether to respond to a particular action based on the action type. When using the createSlice function from Redux Toolkit, the generated reducer only responds to the actions defined within that slice.

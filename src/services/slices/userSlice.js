@@ -15,9 +15,16 @@ const userSlice = createSlice({
     },
     deleteUser: (state, action) => {
         console.log("DELETING THE USER" , action)
+        state.splice(action.payload,1)
     },
     deleteAll: (state, action) => {
+
         console.log("DELETING ALL USERS", action)
+
+        // return state = [];  // Here in delete we should not assign state to some empty array instead just delete the existing array so we should do :
+
+        return [];   // Here returning empty array so now my state becomes empty
+
     },
   },
 });
@@ -27,6 +34,7 @@ console.log(userSlice); // Here it consist of action creators which we can in di
 export default userSlice.reducer; // Have to export the created slice reducer in order to be used in configuring store
 
 export const { addUser , deleteUser , deleteAll } = userSlice.actions  // exporting action creators to be used by our app
+export {userSlice}
 
 /*
 

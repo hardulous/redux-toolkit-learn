@@ -40,6 +40,14 @@ To install redux tookit command is "npm install @reduxjs/toolkit" and to work it
 
 A slice is a function that accepts slice name , an initial state , and object of reducer functions and it automatically generates action creators and action types that correspond to that reducer and state , After creating a slice, we can use the generated action creators in our components directly to dispatch actions to update the state. A slice can be created by createSlice() of redux toolkit.
 
-2. ########## 
+2. ########### Extra Reducer
+
+ExtraReducers is used to add additional reducer logic for actions that are not defined within the reducers field. This is useful when you need to handle actions from other slices or actions that are dispatched globally in your Redux store. Example in userSlice we have deleteAll action but now we need this same action to be performed in some other slice let say adminSlice so in this case instead of repeating the reducer and logic code again we will just to extraReducer field of slice to handle this case as actions once dispatched it one by one go to all slices or reducers. 
+
+If action is supposed to be handled by one reducer then use reducers but if action is supposed to be handled by multiple reducers then use extraReducers and to trigger or dispatch that action from other slice reducer "slice.actions.action()"
+
+But note if in a slice we have handled a action case in both reducer and extra reducer then priority will be given to reducer and extra redcuer will be ignored 
+
+One problem with extra reducer is that if we have defined extraReducer for deleteAll action in adminSlice present in userSlice then it will work fine but if reducer or action of deleteAll has been removed from userSlice so in this case handling the case of deleteAll action in adminSlice will generate error as this action no longer exist so to solve the case of action which are not defined in any slice or those which are generated globally we use "createAction()" method
 
 */
